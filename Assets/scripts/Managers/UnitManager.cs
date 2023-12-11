@@ -15,7 +15,7 @@ public class UnitManager : MonoBehaviour
     [SerializeField] private King _kingPrefab;
 
     public static Unit activeUnit;
-    public static  Dictionary<Vector2Int, Unit> units;
+    public static Dictionary<Vector2Int, Unit> units;
 
     private void Awake()
     {
@@ -58,4 +58,19 @@ public class UnitManager : MonoBehaviour
         Debug.Log("Spawn Pieces called");
         GameManager.Instance.ChangeState(GameState.WhiteTurn);
     }
+
+    public void RemoveUnit(Vector2Int pos)
+    {
+        units[pos].ToggleRenderer();
+        units[pos] = null;
+    }
+
+    public void RemoveUnit(int x, int y)
+    {
+        Vector2Int pos = new Vector2Int(x, y);
+        //Destroy(units[pos]);
+        units[pos].ToggleRenderer();
+        units[pos] = null;
+    }
+
 }

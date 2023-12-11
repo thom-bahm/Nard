@@ -33,28 +33,34 @@ public class Tile : MonoBehaviour
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2Int intCoords = new Vector2Int((int)mousePos.x, (int)mousePos.y);
-        this.TryMove(intCoords); //probably change this to a "can make move" function
+        bool moveMade = this.TryMove(intCoords); //probably change this to a "can make move" function
+        if (moveMade)
+        {
+            BoardStateChecker.CheckBoardState(UnitManager.activeUnit);
+            UnitManager.activeUnit = null;
+        }
     }
 
     // Move this code to the UnitManager probably ?
-    // Or have a script that is responsible for Movement, etc.
-    private void TryMove(Vector2Int intCoords)
+    // For now it's ok, keeps it simple enough - refactor later
+    private bool TryMove(Vector2Int intCoords)
     {
         // If there is a selected unit, update it's position and 'de-activate' it
+        bool moveLegal = false;
         Unit activeRef = UnitManager.activeUnit;
         if (activeRef)
         {
             // check if it is the correct players turn & that it is a legal move
             if (activeRef.GameStateAgrees() && MoveChecker.CheckLegalMove(activeRef.GetPosition(), intCoords))
             {
+                moveLegal = true;
                 activeRef.MoveUnit(intCoords);
-                BoardStateChecker.CheckBoardState(activeRef);
-                UnitManager.activeUnit = null;
 
                 // WhiteTurn stored as 2, BlackTurn stored as -2
                 // so change the game state by flipping it's sign
                 int flippedState = -(int)GameManager.Instance.State;
-                GameManager.Instance.State = (GameState)flippedState;
+                GameManager.Instance.ChangeState((GameState) flippedState);
+                //GameManager.Instance.State = (GameState)flippedState;
             }
             // a unit has been 'picked up' but they pressed on a unit of 
             else if (Piece.SameColor(Board.GetPieceAtPos(intCoords), activeRef.unit))
@@ -74,6 +80,6 @@ public class Tile : MonoBehaviour
                     UnitManager.activeUnit = newActiveUnit;
             }
         }
-
+        return moveLegal;
     }
 }

@@ -42,6 +42,12 @@ public abstract class Unit : MonoBehaviour
         UnitManager.units[_position] = this;
     }
 
+    public void ToggleRenderer()
+    {
+        this._renderer.enabled = !this._renderer.enabled;
+        if (!this._renderer.enabled) _renderer.color = Color.red;
+    }
+
     // Will return int representing color (4 = white, 8 = black)
     public int GetUnitColor()
     {
@@ -68,5 +74,12 @@ public abstract class Unit : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    override public string ToString()
+    {
+        string res;
+        res = "Pos: " + this._position.ToString() + ", unit type: " + unit;
+        return res;
     }
 }

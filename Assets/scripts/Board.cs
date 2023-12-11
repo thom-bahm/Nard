@@ -13,19 +13,20 @@ public static class Board
     /// the column is accesed by the remainder of index divided by 8 (aka index mod 8)
     /// </summary>
     public static int[] Elements;
-    public static bool activePieceState;
+    public static int blackCount;
+    public static int whiteCount;
 
     static Board()
     {
         Elements = new int[64];
-        activePieceState = false;
+        blackCount = 9; whiteCount = 9;
         InitBoard();
     }
 
     //Initial positions for black & white pieces
     private static void InitBoard()
     {
-        // None Pieces
+        // Init None Pieces
         for (int r = 0; r < 8; r++)
         {
             for (int c = 0; c < 8; c++)
@@ -34,14 +35,14 @@ public static class Board
             }
         }
 
-        //White
+        // Add White
         for (int c = 0; c < 8; c++)
         {
             Elements[0 + c * 8] = Piece.White | Piece.Pawn;
         }
         Elements[1 + 3 * 8] = Piece.White | Piece.King; // White King piece
 
-        //Black
+        // Add Black
         for (int c = 0; c < 8; c++)
         {
             Elements[7 + c * 8] = Piece.Black | Piece.Pawn;
@@ -50,15 +51,30 @@ public static class Board
 
     }
 
+    public static void RemovePiece(Vector2Int pos)
+    {
+        if (GetColorAtPos(pos.x, pos.y) == Piece.White) whiteCount--;
+        else blackCount--;
+        Elements[pos.y + 8 * pos.x] = Piece.None;
+    }
+    
+    public static void RemovePiece(int x, int y)
+    {
+        if (GetColorAtPos(x, y) == Piece.White) whiteCount--;
+        else blackCount--;
+        Elements[y + 8 * x] = Piece.None;
+    }
+
+
     public static int GetPieceAtPos(Vector2Int pos)
     {
-        if (pos.x > 7 || pos.y > 7 || pos.x < 0 || pos.y < 0) return -1;
+        if (pos.x > 7 || pos.y > 7 || pos.x < 0 || pos.y < 0) return 0;
         return Elements[pos.y + 8 * pos.x];
     }
 
     public static int GetPieceAtPos(int x, int y)
     {
-        if (x > 7 || y > 7 || x < 0 || y < 0) return -1;
+        if (x > 7 || y > 7 || x < 0 || y < 0) return 0;
         return Elements[y + 8 * x];
     }
 
@@ -70,6 +86,14 @@ public static class Board
 
     public static int GetColorAtPos(Vector2Int pos)
     {
-        return Elements[pos.y + pos.x * 8] & Piece.Black;
+        if (pos.x > 7 || pos.y > 7 || pos.x < 0 || pos.y < 0) return 0;
+        return Elements[pos.y + pos.x * 8] & 12;
     }
+
+    public static int GetColorAtPos(int x, int y)
+    {
+        if (x > 7 || y > 7 || x < 0 || y < 0) return 0;
+        return Elements[y + x * 8] & 12;
+    }
+
 }

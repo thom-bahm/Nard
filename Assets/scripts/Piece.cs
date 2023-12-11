@@ -26,4 +26,9 @@ public static class Piece
     {
         return piece & 0b1100;
     }
+
+    public static int GetType(int piece)
+    {
+        return piece & 0b0011;
+    }
 }

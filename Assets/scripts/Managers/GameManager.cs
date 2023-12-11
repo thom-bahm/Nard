@@ -30,7 +30,10 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.WhiteTurn: break;
             case GameState.BlackTurn: break;
-            case GameState.GameOver: break;
+            case GameState.WhiteWin:
+                break;
+            case GameState.BlackWin:
+                break;
 
         }
     }
@@ -42,5 +45,6 @@ public enum GameState
     SpawnPieces = 1,
     WhiteTurn = 2,
     BlackTurn = -2,
-    GameOver = 3 // for the Game over screen
+    WhiteWin = 3,
+    BlackWin = 4// for the Game over screen
 }
