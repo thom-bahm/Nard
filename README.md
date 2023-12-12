@@ -18,3 +18,9 @@ Current state: Basic game logic is 'finished' - will write some test cases soon 
 Before or after writing the POC of the AI, implement a backtracking feature (look at the moves that have already happend)
 
 Hopefully very soon!
+
+
+Resources:
+
+- [Combinatorial games article](https://hal.science/hal-01883569/document)
+- [Deep reinforcement learning for games](https://towardsdatascience.com/how-to-teach-an-ai-to-play-games-deep-reinforcement-learning-28f9b920440a)
