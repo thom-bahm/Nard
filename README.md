@@ -13,6 +13,8 @@ Some useful properties of 'Nard':
 
 Therefore it can be considered a 'combinatorial' game. This should allow me to use a Game tree to write the AI , which is probably the best choice for this game. I may still opt for a Neural Net approach just to practice some stuff I recently learned in a Math for AI class. Also I may try to calculate if it is 'solvable' as a combinatorial exercie but for now I'll leave it alone.
 
-Current state: Basic game logic is 'finished'. Need to create Menu screens and then I can work on the AI.
+Current state: Basic game logic is 'finished' - will write some test cases soon to check. Need to create Menu / game over screens and then I can work on the AI.
+
+Before or after writing the POC of the AI, implement a backtracking feature (look at the moves that have already happend)
 
 Hopefully very soon!
