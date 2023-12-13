@@ -51,3 +51,4 @@ Hopefully very soon!
 - [Combinatorial games article](https://hal.science/hal-01883569/document)
 - [Deep reinforcement learning for games](https://towardsdatascience.com/how-to-teach-an-ai-to-play-games-deep-reinforcement-learning-28f9b920440a)
 - [MCTS For Connect 4 (Medium)](https://pranav-agarwal-2109.medium.com/game-ai-learning-to-play-connect-4-using-monte-carlo-tree-search-f083d7da451e)
+- [A* stanford](https://theory.stanford.edu/~amitp/GameProgramming/AStarComparison.html)
