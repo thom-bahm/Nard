@@ -25,6 +25,7 @@ I may try to prove /calculate some useful properties about the game such as the 
 #### Strong AI
 - MCTS - Monte Carlo Search Tree
   - This seems like a solid approach to me, as even though the *rules* of Nard are very simple, the branching factor could be quite large which makes the Minimax approach potentially inefficient. (Branching factor on the first move is 53)
+  - Could also add some useful heuristic eval functions to make this more efficient.
   - Need to read more about this
  
 - Minimax w/ Alpha-beta pruning
