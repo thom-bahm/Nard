@@ -20,6 +20,17 @@ Therefore it can be considered a 'combinatorial' game - this makes writing the A
 I may try to prove /calculate some useful properties about the game such as the Avg branching factor and if it is 'solvable' as that could prove useful in deciding the correct AI to program.
 
 
+### To-Do
+
+- MOSTLY: Rewrite some of the code so it will be more friendly with writing the AI:
+- Move class that uses an integer (bit mask) to represent a move including info about the start and end square (I think I can use 8 bits to do this?)
+- GenerateMoves() function that generates a list of all legal moves for all pieces on the board (for the player who is making a move) and returns that list.
+- LegalMoves() function that returns a list of legal moves for a specific piece
+- Small optimization: Can precalculate the # of moves to an edge for every position, so we can just look up that information if needed.
+- small feature: option to show the squares which are legal moves for a selected piece.
+- **Backtracking feature similar to what exists on chess.com**
+- The big one: pick a method & implement the AI
+
 ### Current thoughts on how to implement the AI
 
 #### Strong AI
