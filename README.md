@@ -29,7 +29,6 @@ I may try to prove /calculate some useful properties about the game such as the 
 - Small optimization: Can precalculate the # of moves to an edge for every position, so we can just look up that information if needed.
 - small feature: option to show the squares which are legal moves for a selected piece.
 - **Backtracking feature similar to what exists on chess.com**
-- The big one: pick a method & implement the AI
 
 ### Current thoughts on how to implement the AI
 
