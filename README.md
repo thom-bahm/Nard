@@ -30,7 +30,7 @@ I may try to prove /calculate some useful properties about the game such as the 
 - small feature: option to show the squares which are legal moves for a selected piece.
 - **Backtracking feature similar to what exists on chess.com**
 
-### Current thoughts on how to implement the AI
+### Current thoughts on AI Implementation
 
 #### Strong AI
 - MCTS - Monte Carlo Search Tree
